@@ -52,7 +52,6 @@ function showNotification(message, duration = 2000) {
 }
 
 function smartTrim(text, maxLength) {
-
 	if (text.length <= maxLength) return text;
 
 	const lastSpace = text.slice(0, maxLength).lastIndexOf(' ');
@@ -62,9 +61,7 @@ function smartTrim(text, maxLength) {
 }
 
 function setButtonStyle(button, background_color, top, text) {
-
 	button.innerHTML = `${text}`
-
 	return Object.assign(button.style, {
 		position: 'fixed',
 		top: `${top}`,
@@ -92,11 +89,11 @@ function setButtonStyle(button, background_color, top, text) {
 }
 
 function getData() {
-  const url = window.location.href;
+	const url = window.location.href;
 	const localTitle = document.querySelector("#dle-content > article > div.amd-card > div.amd-content > div.amd-top > div:nth-child(1) > div.amd-title > h1")?.textContent || "";
 	const ogTitle = document.querySelector("#dle-content > article > div.amd-card > div.amd-content > div.amd-top > div:nth-child(1) > div.amd-sub-container > span")?.textContent || "";
-  const anime_name = smartTrim(ogTitle.trim(), 100);
-  const malUrl = `https://myanimelist.net/anime.php?q=${encodeURIComponent(anime_name)}&cat=anime`;
+	const anime_name = smartTrim(ogTitle.trim(), 100);
+	const malUrl = `https://myanimelist.net/anime.php?q=${encodeURIComponent(anime_name)}&cat=anime`;
 
 	const match = localTitle.match(/«([^»]+)»/);
 	const title = match ? match[1] : localTitle;
@@ -107,9 +104,7 @@ function getData() {
 
 (function () {
 	'use strict';
-
 	let data = getData();
-
 	const copyButton = document.createElement("button");
 	let copyButtonColor = '#4CAF50';
 
