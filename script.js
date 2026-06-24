@@ -96,7 +96,8 @@ function getData() {
 	const malUrl = `https://myanimelist.net/anime.php?q=${encodeURIComponent(anime_name)}&cat=anime`;
 
 	const match = localTitle.match(/«([^»]+)»/);
-	const title = match ? match[1] : localTitle;
+	let title = match ? match[1] : localTitle;
+	title = smartTrim(title.trim(), 100);
 	const markdownLinks = `[${title}](${window.location.href})\n[${ogTitle}](${malUrl})`;
 
 	return { markdownLinks, malUrl };
