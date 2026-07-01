@@ -78,8 +78,6 @@ function setButtonStyle(button, background_color, top, text) {
 		// Цвета и рамка
 		backgroundColor: `${background_color}`,
 		color: 'white',
-		border: 'none',
-		borderRadius: '8px',
 
 		// Эффекты
 		cursor: 'pointer',
@@ -89,15 +87,16 @@ function setButtonStyle(button, background_color, top, text) {
 }
 
 function getData() {
-	const url = window.location.href;
 	const localTitle = document.querySelector("#dle-content > article > div.amd-card > div.amd-content > div.amd-top > div:nth-child(1) > div.amd-title > h1")?.textContent || "";
 	const ogTitle = document.querySelector("#dle-content > article > div.amd-card > div.amd-content > div.amd-top > div:nth-child(1) > div.amd-sub-container > span")?.textContent || "";
+
 	const anime_name = smartTrim(ogTitle.trim(), 100);
 	const malUrl = `https://myanimelist.net/anime.php?q=${encodeURIComponent(anime_name)}&cat=anime`;
 
 	const match = localTitle.match(/«([^»]+)»/);
 	let title = match ? match[1] : localTitle;
 	title = smartTrim(title.trim(), 100);
+
 	const markdownLinks = `[${title}](${window.location.href})\n[${ogTitle}](${malUrl})`;
 
 	return { markdownLinks, malUrl };
